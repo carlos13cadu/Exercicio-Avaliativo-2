@@ -1,0 +1,54 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OBank - O Banco que Entende Você</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+	<div class="container mt-3">
+
+		<!--Cabeçalho -->
+		<header id="cabecalho" class="row">
+			<div class="col-6 d-flex align-items-end">
+				<a href="menu.html">
+					<img src="img/icone.png" alt="logo" class="icone-cabecalho">
+				</a>
+			</div>
+			<div class="col-6 d-flex align-items-end justify-content-end">
+				<span class="fw-bold">Cliente: <span id="nome" class="text-danger">?</span></span>
+			</div>
+		</header>
+		
+
+		<div class="container mt-4">
+			<h3 class="text-left w-100">Contas</h1>
+
+			<table class="table table-hover">
+				<thead class="table-dark">
+					<tr>
+						<th style="width: 75%;">Número da Conta</th> 
+						<th style="width: 25%;">Saldo</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="row mt-2">
+				<div class="col-md-3 offset-md-9">
+					<button class="btn btn-success w-100" type="button" onclick="criarConta()">Criar conta</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.js"></script>
+	<script type="text/javascript" src="js/conta.js"></script>
+</body>
+
+</html>
