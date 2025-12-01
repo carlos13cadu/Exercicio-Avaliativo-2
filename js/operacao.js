@@ -18,6 +18,7 @@ async function exibirContas() {
 
         contas.forEach(conta => {
             let option = new Option(conta.numero, conta.id);
+            option.setAttribute('data-saldo', conta.saldo);
             
             selectConta.add(option);
         });
@@ -31,8 +32,21 @@ async function exibirContas() {
 async function confirmar(){
     
     try {
-        var cliente = JSON.parse(localStorage.getItem('clienteAutenticado'));
-        
+
+        if (isNaN($("#valor").val()) || $("#valor").val() <= 0) {
+            alert("Digite um valor válido.");
+            return;
+        }
+
+        if ($("#operacao").val() == 1){
+            const opcaoSelecionada = $("#selectConta option:selected");
+            const saldoAtual = parseFloat(opcaoSelecionada.attr('data-saldo'));
+            if ($("#valor").val() > saldoAtual) {
+                alert(`Saldo insuficiente! Seu saldo é R$ ${saldoAtual.toFixed(2)}`);
+                return; // O return PARALISA a função aqui. Não envia nada pra API.
+            }
+        }
+
         let lancamento = new Object();
         if ($("#operacao").val() == 1){
             lancamento.tipo  = 'SAQUE';

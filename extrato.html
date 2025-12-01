@@ -13,50 +13,54 @@
 
 		<!--Cabeçalho -->
 		<header id="cabecalho" class="row">
-			<div class="col-12 d-flex align-items-end">
+			<div class="col-6 d-flex align-items-end">
 				<a href="menu.html">
 					<img src="img/icone.png" alt="logo" class="icone-cabecalho">
 				</a>
-				<span class="fw-bold ms-3">Cliente: <span id="nome" class="text-danger">?</span></span>
+			</div>
+			<div class="col-6 d-flex align-items-end justify-content-end">
+				<span class="fw-bold">Cliente: <span id="nome" class="text-danger">?</span></span>
 			</div>
 		</header>
-
+		
 		<!--Corpo -->
-		<h3 class="container mt-4 text-left mb-4 w-100">Operações</h1>
+		<h3 class="container mt-4 text-left mb-4 w-100">Extrato</h1>
 		<fieldset>
 			<div class="row mb-3">
-				<div class="col-md-5">
+				<div class="col-md-12">
 					<label class="form-label" for="selectConta">Conta</label>
 					<select class="form-select" id="selectConta" name="selectConta">
 						<option selected disabled>Selecione uma conta</option>
 					</select>
 				</div>
-				<div class="col-md-5">
-					<label class="form-label" for="operacao">Operação</label>
-					<select class="form-select" id="operacao" name="operacao">
-						<option selected disabled>Selecione uma operação</option>
-						<option value="1">Saque</option>
-						<option value="2">Depósito</option>
-					</select>
-				</div>
-				<div class="col-md-2">
-					<label class="form-label" for="valor">Valor</label>
-					<input class="form-control" id="valor" name="valor" type="number" required>
-				</div>
 			</div>
-			<div class="row mb-3">
+			<div class="row mb-4">
 				<div class="col-12 d-flex justify-content-end">
-					<button class="btn btn-success" type="button" onclick="confirmar()">Confirmar</button>
+					<button class="btn btn-success" type="button" onclick="consultar()">Consultar</button>
 				</div>					
 			</div>
 		</fieldset>
+		<div class="container mt-4">
+			<table id="tabela" class="table table-hover">
+				<thead class="table-dark">
+					<tr>
+						<th style="width: 50%;">Data</th> 
+						<th style="width: 25%;">Valor</th>
+						<th style="width: 25%;">Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		
 	</div>
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.js"></script>
 	<script type="text/javascript" src="js/jquery.mask.js"></script>
-	<script type="text/javascript" src="js/operacao.js"></script>
+	<script type="text/javascript" src="js/extrato.js"></script>
 </body>
 
 </html>
