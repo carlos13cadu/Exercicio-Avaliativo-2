@@ -1,3 +1,5 @@
+let temporizadorSessao;
+
 $(document).ready(function(){
     if (!localStorage.clienteAutenticado) {
         alert("Acesso negado.");
@@ -7,12 +9,14 @@ $(document).ready(function(){
     var primeiroNome = cliente.nome.substr(0, cliente.nome.indexOf(' '));
     $("#nome").text(primeiroNome);
     exibirContas()
+    iniciarTemporizador();
 })
 
 async function exibirContas() {
 
     try {
-        const response = await fetch(`http://localhost:8888/api/contas`);
+        var cliente = JSON.parse(localStorage.getItem('clienteAutenticado'));
+        const response = await fetch(`http://localhost:8888/api/contas/cliente/ + ${cliente.id}`);
         
         const contas = await response.json(); 
 
@@ -30,8 +34,15 @@ async function exibirContas() {
     }
 }
 
+function iniciarTemporizador(){
+	if (temporizadorSessao) {
+        clearTimeout(temporizadorSessao);
+    }
+    temporizadorSessao = setTimeout(sessaoExpirada, 60000);
+}
+
 async function consultar(){
-    
+    iniciarTemporizador();
     var tabela = document.getElementById("tabela");
 	apagarLinhas(tabela);
 
@@ -83,4 +94,10 @@ function apagarLinhas(tabela) {
 	while (corpoTabela.rows.length > 0) {
 		corpoTabela.deleteRow(0);
 	}
+}
+
+function sessaoExpirada(){
+	alert('Sessão expirada!');
+	localStorage.setItem('usuarioAutenticado', JSON.stringify(null));
+	window.location.href = "login.html";
 }
